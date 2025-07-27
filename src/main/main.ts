@@ -59,7 +59,7 @@ class ConverterApp {
 
     // Load the app
     if (this.isDev) {
-      this.mainWindow.loadURL('http://localhost:4004')
+      this.mainWindow.loadURL('http://localhost:4000')
       this.mainWindow.webContents.openDevTools()
     } else {
       this.mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
