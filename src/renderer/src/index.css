@@ -19,60 +19,120 @@
 @layer components {
   /* Custom component styles following 2025 design trends */
   .glass-effect {
-    @apply backdrop-blur-xl bg-white/70 border border-white/20;
+    backdrop-filter: blur(24px);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
   
   .card-elevated {
-    @apply bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition: all 0.3s;
+    &:hover {
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
   }
   
   .drag-active {
-    @apply shadow-2xl scale-105 transition-all duration-300 ring-2 ring-primary-500/50;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25), 0 0 0 2px rgb(59 130 246);
+    transform: scale(1.05);
+    transition: all 0.3s;
   }
   
   .button-primary {
-    @apply bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl;
+    background: linear-gradient(to right, rgb(37 99 235), rgb(29 78 216));
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    &:hover {
+      background: linear-gradient(to right, rgb(29 78 216), rgb(30 64 175));
+      transform: scale(1.05);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+    &:active {
+      transform: scale(0.95);
+    }
   }
   
   .button-secondary {
-    @apply bg-white/80 hover:bg-white text-gray-700 font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg border border-white/20;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: rgb(55, 65, 81);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transition: all 0.3s;
+    &:hover {
+      background-color: rgb(255, 255, 255);
+      transform: scale(1.05);
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+    &:active {
+      transform: scale(0.95);
+    }
   }
   
   .input-field {
-    @apply bg-white/80 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 shadow-sm focus:shadow-lg;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    transition: all 0.3s;
+    &:focus {
+      outline: none;
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1), 0 0 0 2px rgb(59 130 246);
+      border-color: transparent;
+    }
   }
   
   .panel-border {
-    @apply border-r border-gray-200/50 dark:border-gray-700/50;
+    border-right: 1px solid rgba(229, 231, 235, 0.5);
   }
   
   .status-pending {
-    @apply text-gray-600 bg-white/60 backdrop-blur-sm;
+    color: rgb(75, 85, 99);
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
   }
   
   .status-processing {
-    @apply text-yellow-700 bg-yellow-100/80 dark:bg-yellow-900/30 dark:text-yellow-400 backdrop-blur-sm;
+    color: rgb(161, 98, 7);
+    background-color: rgba(254, 249, 195, 0.8);
+    backdrop-filter: blur(8px);
   }
   
   .status-completed {
-    @apply text-green-700 bg-green-100/80 dark:bg-green-900/30 dark:text-green-400 backdrop-blur-sm;
+    color: rgb(21, 128, 61);
+    background-color: rgba(220, 252, 231, 0.8);
+    backdrop-filter: blur(8px);
   }
   
   .status-failed {
-    @apply text-red-700 bg-red-100/80 dark:bg-red-900/30 dark:text-red-400 backdrop-blur-sm;
+    color: rgb(185, 28, 28);
+    background-color: rgba(254, 226, 226, 0.8);
+    backdrop-filter: blur(8px);
   }
   
   /* Modern gradient backgrounds */
   .gradient-primary {
-    @apply bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700;
+    background: linear-gradient(to right, rgb(59 130 246), rgb(37 99 235), rgb(29 78 216));
   }
   
   .gradient-success {
-    @apply bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500;
+    background: linear-gradient(to right, rgb(34 197 94), rgb(16 185 129), rgb(20 184 166));
   }
   
   .gradient-surface {
-    @apply bg-gradient-to-br from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900;
+    background: linear-gradient(to bottom right, rgb(255 255 255), rgb(249 250 251), rgb(255 255 255));
   }
 }
 

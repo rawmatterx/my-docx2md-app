@@ -62,14 +62,14 @@ export function ConfigurationPanel({
   return (
     <div className="h-full flex flex-col">
       {/* Header */}
-      <div className="p-8 border-b border-gray-200/50 dark:border-gray-700/50 bg-gradient-to-br from-gray-50/50 to-white dark:from-gray-800/50 dark:to-gray-900">
+      <div className="p-8 border-b border-white/20 bg-gradient-to-br from-white/50 to-white">
         <div className="flex items-center space-x-3 mb-3">
           <div className="w-2 h-8 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full"></div>
           <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
             Configuration
           </h2>
         </div>
-        <p className="text-sm text-gray-600 dark:text-gray-400 ml-5">
+        <p className="text-sm text-slate-600 ml-5">
           Customize settings and preview results
         </p>
       </div>
@@ -106,7 +106,7 @@ export function ConfigurationPanel({
               className={`flex-1 flex items-center justify-center space-x-2 py-2 px-3 rounded-md text-sm font-medium transition-all duration-200 ${
                 activeTab === id
                   ? 'bg-white dark:bg-neutral-700 text-blue-600 dark:text-blue-400 shadow-sm'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
+                  : 'text-slate-600 hover:text-slate-800'
               }`}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -137,7 +137,7 @@ export function ConfigurationPanel({
                 </label>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3 p-3 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-                    <Folder className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                    <Folder className="w-5 h-5 text-slate-400 flex-shrink-0" />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-mono text-text-primary dark:text-text-inverse truncate">
                         {formatPath(outputDirectory)}
@@ -173,7 +173,7 @@ export function ConfigurationPanel({
                       <p className="text-sm font-medium text-text-primary dark:text-text-inverse">
                         Preserve Formatting
                       </p>
-                      <p className="text-xs text-text-secondary dark:text-gray-400">
+                      <p className="text-xs text-slate-500">
                         Keep headings, lists, and tables
                       </p>
                     </div>
@@ -187,7 +187,7 @@ export function ConfigurationPanel({
                       <p className="text-sm font-medium text-text-primary dark:text-text-inverse">
                         Link Preservation
                       </p>
-                      <p className="text-xs text-text-secondary dark:text-gray-400">
+                      <p className="text-xs text-slate-500">
                         Maintain hyperlinks and references
                       </p>
                     </div>
@@ -201,7 +201,7 @@ export function ConfigurationPanel({
                       <p className="text-sm font-medium text-text-primary dark:text-text-inverse">
                         Image References
                       </p>
-                      <p className="text-xs text-text-secondary dark:text-gray-400">
+                      <p className="text-xs text-slate-500">
                         Convert image references to Markdown
                       </p>
                     </div>
@@ -270,7 +270,7 @@ export function ConfigurationPanel({
                       <p className="text-2xl font-bold text-text-primary dark:text-text-inverse">
                         {stats.total}
                       </p>
-                      <p className="text-xs text-text-secondary dark:text-gray-400">
+                      <p className="text-xs text-slate-500">
                         Total Files
                       </p>
                     </div>
@@ -286,7 +286,7 @@ export function ConfigurationPanel({
                       <p className="text-2xl font-bold text-text-primary dark:text-text-inverse">
                         {stats.completed}
                       </p>
-                      <p className="text-xs text-text-secondary dark:text-gray-400">
+                      <p className="text-xs text-slate-500">
                         Completed
                       </p>
                     </div>
@@ -302,7 +302,7 @@ export function ConfigurationPanel({
                       <p className="text-2xl font-bold text-text-primary dark:text-text-inverse">
                         {stats.failed}
                       </p>
-                      <p className="text-xs text-text-secondary dark:text-gray-400">
+                      <p className="text-xs text-slate-500">
                         Failed
                       </p>
                     </div>
@@ -318,7 +318,7 @@ export function ConfigurationPanel({
                       <p className="text-2xl font-bold text-text-primary dark:text-text-inverse">
                         {formatFileSize(stats.totalSize)}
                       </p>
-                      <p className="text-xs text-text-secondary dark:text-gray-400">
+                      <p className="text-xs text-slate-500">
                         Total Size
                       </p>
                     </div>
@@ -360,7 +360,7 @@ export function ConfigurationPanel({
                           <p className="text-sm font-medium text-text-primary dark:text-text-inverse truncate">
                             {task.fileName}
                           </p>
-                          <p className="text-xs text-text-secondary dark:text-gray-400">
+                          <p className="text-xs text-slate-500">
                             {task.status === 'completed' && 'Successfully converted'}
                             {task.status === 'failed' && 'Conversion failed'}
                             {task.status === 'processing' && 'Converting...'}

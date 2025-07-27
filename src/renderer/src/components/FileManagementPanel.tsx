@@ -40,7 +40,7 @@ export function FileManagementPanel({
   const getStatusIcon = useCallback((status: ConversionTask['status']) => {
     switch (status) {
       case 'pending':
-        return <File className="w-4 h-4 text-gray-400" />
+        return <File className="w-4 h-4 text-slate-400" />
       case 'processing':
         return (
           <motion.div
@@ -55,7 +55,7 @@ export function FileManagementPanel({
       case 'failed':
         return <AlertCircle className="w-4 h-4 text-error-500" />
       default:
-        return <File className="w-4 h-4 text-gray-400" />
+        return <File className="w-4 h-4 text-slate-400" />
     }
   }, [])
 
@@ -79,14 +79,14 @@ export function FileManagementPanel({
   return (
     <div className="h-full flex flex-col">
       {/* Header */}
-      <div className="p-8 border-b border-gray-200/50 dark:border-gray-700/50 bg-gradient-to-br from-gray-50/50 to-white dark:from-gray-800/50 dark:to-gray-900">
+      <div className="p-8 border-b border-white/20 bg-gradient-to-br from-white/50 to-white">
         <div className="flex items-center space-x-3 mb-3">
-          <div className="w-2 h-8 bg-gradient-to-b from-primary-500 to-primary-600 rounded-full"></div>
+          <div className="w-2 h-8 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full"></div>
           <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
             File Management
           </h2>
         </div>
-        <p className="text-sm text-gray-600 dark:text-gray-400 ml-5">
+        <p className="text-sm text-slate-600 ml-5">
           Add DOCX files to convert to Markdown format
         </p>
       </div>
@@ -94,10 +94,10 @@ export function FileManagementPanel({
       {/* Stats Bar */}
       <div className="px-8 py-4 bg-neutral-50/50 dark:bg-neutral-800/30 border-b border-neutral-200/30 dark:border-neutral-700/30">
         <div className="flex items-center justify-between text-sm">
-          <span className="text-gray-600 dark:text-gray-400">
+          <span className="text-slate-600">
             {tasks.length} files selected
           </span>
-          <span className="text-gray-600 dark:text-gray-400">
+          <span className="text-slate-600">
             {formatFileSize(tasks.reduce((sum, task) => sum + task.fileSize, 0))} total
           </span>
         </div>
@@ -107,7 +107,7 @@ export function FileManagementPanel({
       <div className="p-8 space-y-4">
         <motion.button
           onClick={onAddFiles}
-          className="w-full flex items-center justify-center space-x-3 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="w-full flex items-center justify-center space-x-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
         >
@@ -163,15 +163,15 @@ export function FileManagementPanel({
             isDragOver ? 'bg-blue-100 dark:bg-blue-900/30' : 'bg-neutral-100 dark:bg-neutral-800'
           }`}>
             <Upload className={`w-8 h-8 ${
-              isDragOver ? 'text-primary-500' : 'text-gray-400'
+              isDragOver ? 'text-blue-500' : 'text-slate-400'
             }`} />
           </div>
           <p className={`text-lg font-semibold mb-2 ${
-            isDragOver ? 'text-primary-600 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300'
+            isDragOver ? 'text-blue-600' : 'text-slate-700'
           }`}>
             {isDragOver ? 'Drop files here' : 'Drag & drop DOCX files'}
           </p>
-          <p className="text-sm text-gray-500 dark:text-gray-500">
+          <p className="text-sm text-slate-500">
             or use the buttons above to browse
           </p>
         </motion.div>

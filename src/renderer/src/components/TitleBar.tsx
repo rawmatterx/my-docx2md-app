@@ -14,7 +14,7 @@ export function TitleBar() {
 
   return (
     <motion.div
-      className="h-16 bg-gradient-to-r from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border-b border-gray-200/50 dark:border-gray-700/50 flex items-center justify-between px-8 select-none backdrop-blur-xl"
+      className="h-16 bg-gradient-to-r from-white via-white to-white border-b border-white/20 flex items-center justify-between px-8 select-none"
       initial={{ y: -10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.3 }}
@@ -22,7 +22,7 @@ export function TitleBar() {
       {/* App Title */}
       <div className="flex items-center space-x-4">
         <motion.div
-          className="relative p-3 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl shadow-lg"
+          className="relative p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -39,7 +39,7 @@ export function TitleBar() {
           <h1 className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
             DocX to Markdown Converter
           </h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+          <p className="text-sm text-slate-500 font-medium">
             Transform documents with AI-powered precision
           </p>
         </div>

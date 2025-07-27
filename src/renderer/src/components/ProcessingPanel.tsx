@@ -42,14 +42,14 @@ export function ProcessingPanel({
   return (
     <div className="h-full flex flex-col">
       {/* Header */}
-      <div className="p-8 border-b border-gray-200/50 dark:border-gray-700/50 bg-gradient-to-br from-gray-50/50 to-white dark:from-gray-800/50 dark:to-gray-900">
+      <div className="p-8 border-b border-white/20 bg-gradient-to-br from-white/50 to-white">
         <div className="flex items-center space-x-3 mb-3">
           <div className="w-2 h-8 bg-gradient-to-b from-green-500 to-emerald-600 rounded-full"></div>
           <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
             Processing Center
           </h2>
         </div>
-        <p className="text-sm text-gray-600 dark:text-gray-400 ml-5">
+        <p className="text-sm text-slate-600 ml-5">
           Monitor conversion progress and manage operations
         </p>
       </div>
@@ -139,7 +139,7 @@ export function ProcessingPanel({
               {/* Progress Bar */}
               <div className="w-full bg-neutral-200 dark:bg-neutral-700 rounded-full h-3 mb-6 overflow-hidden">
                 <motion.div
-                  className="h-full bg-gradient-to-r from-primary-500 to-primary-600 rounded-full"
+                  className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"
                   initial={{ width: 0 }}
                   animate={{ width: `${conversionProgress}%` }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
@@ -148,7 +148,7 @@ export function ProcessingPanel({
 
               {/* Stats Grid */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded-lg">
+                <div className="text-center p-3 bg-white/60 rounded-lg">
                   <div className="text-2xl font-bold text-success-600 dark:text-success-400">
                     {stats.completed}
                   </div>
@@ -157,7 +157,7 @@ export function ProcessingPanel({
                   </div>
                 </div>
                 
-                <div className="text-center p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded-lg">
+                <div className="text-center p-3 bg-white/60 rounded-lg">
                   <div className="text-2xl font-bold text-error-600 dark:text-error-400">
                     {stats.failed}
                   </div>
@@ -166,7 +166,7 @@ export function ProcessingPanel({
                   </div>
                 </div>
 
-                <div className="text-center p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded-lg">
+                <div className="text-center p-3 bg-white/60 rounded-lg">
                   <div className="text-2xl font-bold text-warning-600 dark:text-warning-400">
                     {stats.processing}
                   </div>
@@ -175,8 +175,8 @@ export function ProcessingPanel({
                   </div>
                 </div>
 
-                <div className="text-center p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded-lg">
-                  <div className="text-2xl font-bold text-gray-600 dark:text-gray-400">
+                <div className="text-center p-3 bg-white/60 rounded-lg">
+                  <div className="text-2xl font-bold text-slate-600">
                     {stats.pending}
                   </div>
                   <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">

@@ -114,14 +114,14 @@ function App() {
           <div className="flex-1 flex overflow-hidden relative">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-30 dark:opacity-10">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/5 via-transparent to-emerald-500/5"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-emerald-500/5"></div>
               <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"></div>
               <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
             </div>
             
             {/* Left Panel - File Management (30%) */}
             <motion.div 
-              className="w-[30%] min-w-[380px] panel-border bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl relative z-10"
+              className="w-[30%] min-w-[380px] panel-border bg-white/60 relative z-10"
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.1 }}
@@ -154,7 +154,7 @@ function App() {
 
             {/* Right Panel - Configuration & Output (30%) */}
             <motion.div 
-              className="w-[30%] min-w-[380px] border-l border-neutral-200/50 dark:border-neutral-700/50 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl relative z-10"
+              className="w-[30%] min-w-[380px] border-l border-white/20 bg-white/60 relative z-10"
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.3 }}
