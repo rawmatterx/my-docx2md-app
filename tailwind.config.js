@@ -2,6 +2,7 @@
 export default {
   content: [
     "./src/renderer/**/*.{js,ts,jsx,tsx}",
+    "./src/renderer/src/index.css",
   ],
   darkMode: 'class',
   theme: {
