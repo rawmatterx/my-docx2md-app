@@ -6,9 +6,9 @@
 
   body {
     @apply bg-gray-50 dark:bg-gray-900 text-text-primary;
-  background-image: linear-gradient(to bottom right, theme('colors.gray.50'), theme('colors.white'), theme('colors.gray.100'));
+  background-image: linear-gradient(to bottom right, #f9fafb, #ffffff, #f3f4f6);
   @media (prefers-color-scheme: dark) {
-    background-image: linear-gradient(to bottom right, theme('colors.gray.900'), theme('colors.gray.800'), theme('colors.gray.900'));
+    background-image: linear-gradient(to bottom right, #111827, #1f2937, #111827);
   }
     font-feature-settings: "rlig" 1, "calt" 1;
     font-optical-sizing: auto;
