@@ -176,12 +176,6 @@ export function FileManagementPanel({
           </p>
         </motion.div>
       </div>
-          File Management
-        </h2>
-        <p className="text-sm text-text-secondary dark:text-gray-400">
-          Add DOCX files to convert to Markdown
-        </p>
-      </div>
 
       {/* Action Buttons */}
       <div className="p-6 space-y-3">

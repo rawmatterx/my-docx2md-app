@@ -127,5 +127,8 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('tailwind-scrollbar'),
+  ],
 }

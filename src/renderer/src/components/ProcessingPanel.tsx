@@ -116,44 +116,6 @@ export function ProcessingPanel({
           )}
         </motion.button>
       </div>
-          Processing & Progress
-        </h2>
-        <p className="text-sm text-text-secondary dark:text-gray-400">
-          Monitor conversion progress and manage batch operations
-        </p>
-      </div>
-
-      {/* Main Action Button */}
-      <div className="p-6">
-        <motion.button
-          onClick={onStartConversion}
-          disabled={!canStartConversion}
-          className={`w-full flex items-center justify-center space-x-3 font-semibold py-4 px-6 rounded-xl transition-all duration-300 ${
-            canStartConversion
-              ? 'bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white shadow-lg hover:shadow-xl'
-              : 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed'
-          }`}
-          whileHover={canStartConversion ? { scale: 1.02 } : {}}
-          whileTap={canStartConversion ? { scale: 0.98 } : {}}
-        >
-          {isConverting ? (
-            <>
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-              >
-                <Zap className="w-6 h-6" />
-              </motion.div>
-              <span className="text-lg">Converting...</span>
-            </>
-          ) : (
-            <>
-              <Play className="w-6 h-6" />
-              <span className="text-lg">Start Conversion</span>
-            </>
-          )}
-        </motion.button>
-      </div>
 
       {/* Progress Section */}
       <AnimatePresence>

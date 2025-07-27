@@ -95,12 +95,6 @@ export function ConfigurationPanel({
           ))}
         </div>
       </div>
-          Configuration & Output
-        </h2>
-        <p className="text-sm text-text-secondary dark:text-gray-400">
-          Configure settings and preview results
-        </p>
-      </div>
 
       {/* Tab Navigation */}
       <div className="px-6 pt-4">

@@ -1,0 +1,68 @@
+{
+  "tech_stack": [
+    "TypeScript",
+    "React 18",
+    "Vite",
+    "Tailwind CSS",
+    "Framer Motion",
+    "PWA (vite-plugin-pwa)",
+    "Node.js 18",
+    "Electron (desktop build)",
+    "Mammoth.js + html2text (DOCX -> MD)"
+  ],
+  "features": [
+    {
+      "name": "File Management Panel",
+      "description": "UI for drag-and-drop, browsing, clearing and listing selected DOCX files.",
+      "files": [
+        "src/renderer/src/components/FileManagementPanel.tsx"
+      ]
+    },
+    {
+      "name": "Processing Panel",
+      "description": "Displays conversion stats, progress, start button and real-time feedback.",
+      "files": [
+        "src/renderer/src/components/ProcessingPanel.tsx"
+      ]
+    },
+    {
+      "name": "Configuration Panel",
+      "description": "Tabs for output directory selection, preview, and advanced settings.",
+      "files": [
+        "src/renderer/src/components/ConfigurationPanel.tsx"
+      ]
+    },
+    {
+      "name": "React Context Providers",
+      "description": "Global state management for file tasks, conversion status, and theming.",
+      "files": [
+        "src/renderer/src/context/AppContext.tsx",
+        "src/renderer/src/hooks/useConversion.ts"
+      ]
+    },
+    {
+      "name": "DOCX → Markdown Service",
+      "description": "Uses Mammoth + html2text to convert DOCX to markdown locally in the browser (web) or via Node in Electron.",
+      "files": [
+        "src/renderer/src/utils/convert.ts",
+        "src/renderer/src/ipc/converter.ts" 
+      ]
+    },
+    {
+      "name": "PWA Service Worker Registration",
+      "description": "Registers Vite-generated service worker for offline caching and update flow.",
+      "files": [
+        "src/renderer/src/serviceWorkerRegistration.ts",
+        "vite.config.ts"
+      ]
+    },
+    {
+      "name": "Styling & Design Tokens",
+      "description": "Tailwind config with extended palette, animations, scrollbar + typography plugins.",
+      "files": [
+        "tailwind.config.js",
+        "src/renderer/src/index.css"
+      ]
+    }
+  ]
+}
