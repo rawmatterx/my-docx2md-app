@@ -1,7 +1,9 @@
 import axios, { AxiosProgressEvent } from 'axios';
 import { io, Socket } from 'socket.io-client';
 
-const API_BASE_URL = (typeof window !== 'undefined' && (window as any).VITE_API_URL) || 'http://localhost:3001';
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://my-docx2md-app.vercel.app' 
+  : 'http://localhost:3001';
 
 // Create axios instance
 const apiClient = axios.create({

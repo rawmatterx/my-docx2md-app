@@ -1,4 +1,5 @@
 import { webAPIClient, ConversionTask } from '../../../utils/apiClient';
+import { webOnlyConverter } from '../../../utils/webOnlyConverter';
 
 export class WebFileHandler {
   static async selectFiles(): Promise<ConversionTask[]> {
@@ -70,33 +71,52 @@ export class WebFileHandler {
     outputDir: string,
     onProgress?: (task: ConversionTask) => void
   ): Promise<ConversionTask[]> {
-    // Extract files from tasks
-    const files = tasks.map(task => task.file).filter(Boolean) as File[];
+    // Check if we're in production (Vercel) or development
+    const isProduction = process.env.NODE_ENV === 'production' || window.location.hostname.includes('vercel.app');
     
-    if (files.length === 0) {
-      throw new Error('No files to convert');
-    }
-
-    try {
-      // Use the web API client for conversion
-      const convertedTasks = await webAPIClient.convertFiles(files, {}, onProgress);
+    if (isProduction) {
+      // Use web-only converter for Vercel deployment
+      console.log('Using web-only converter for production deployment');
+      return webOnlyConverter.convertFiles(tasks, outputDir, onProgress);
+    } else {
+      // Use API client for local development
+      console.log('Using API client for local development');
       
-      // Auto-download completed files
-      for (const task of convertedTasks) {
-        if (task.status === 'completed' && task.outputPath) {
-          try {
-            const outputFileName = task.fileName.replace(/\.[^/.]+$/, '.md');
-            await webAPIClient.downloadFile(task.id, outputFileName);
-          } catch (downloadError) {
-            console.error('Auto-download failed:', downloadError);
+      // Extract files from tasks
+      const files = tasks.map(task => task.file).filter(Boolean) as File[];
+      
+      if (files.length === 0) {
+        throw new Error('No files to convert');
+      }
+
+      try {
+        // Check API health first
+        const isHealthy = await this.checkAPIHealth();
+        if (!isHealthy) {
+          console.warn('API server not available, falling back to web-only converter');
+          return webOnlyConverter.convertFiles(tasks, outputDir, onProgress);
+        }
+
+        // Use the web API client for conversion
+        const convertedTasks = await webAPIClient.convertFiles(files, {}, onProgress);
+        
+        // Auto-download completed files
+        for (const task of convertedTasks) {
+          if (task.status === 'completed' && task.outputPath) {
+            try {
+              const outputFileName = task.fileName.replace(/\.[^/.]+$/, '.md');
+              await webAPIClient.downloadFile(task.id, outputFileName);
+            } catch (downloadError) {
+              console.error('Auto-download failed:', downloadError);
+            }
           }
         }
+        
+        return convertedTasks;
+      } catch (error) {
+        console.error('API conversion failed, falling back to web-only converter:', error);
+        return webOnlyConverter.convertFiles(tasks, outputDir, onProgress);
       }
-      
-      return convertedTasks;
-    } catch (error) {
-      console.error('Conversion failed:', error);
-      throw error;
     }
   }
 
@@ -116,6 +136,12 @@ export class WebFileHandler {
 
   static async checkAPIHealth(): Promise<boolean> {
     try {
+      // In production, always return true since we use web-only converter
+      const isProduction = process.env.NODE_ENV === 'production' || window.location.hostname.includes('vercel.app');
+      if (isProduction) {
+        return true;
+      }
+      
       await webAPIClient.checkHealth();
       return true;
     } catch (error) {
