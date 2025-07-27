@@ -4,13 +4,9 @@
   "description": "Modern DocX to Markdown Bulk Converter with sophisticated UI",
   "main": "dist/main.js",
   "scripts": {
-    "dev": "concurrently \"npm run dev:main\" \"npm run dev:renderer\"",
-    "dev:main": "tsc -p tsconfig.main.json && NODE_ENV=development electron dist/main.js",
-    "dev:renderer": "vite",
-    "build": "npm run build:main && npm run build:renderer",
-    "build:main": "tsc -p tsconfig.main.json",
-    "build:renderer": "vite build",
-    "package": "electron-builder",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "lint": "eslint src --ext .ts,.tsx",
     "type-check": "tsc --noEmit"
   },

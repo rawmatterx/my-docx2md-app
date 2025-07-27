@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { WebFileHandler, ConversionTask } from './utils/webFileHandler'
 import { FileManagementPanel } from './components/FileManagementPanel'
 import { ProcessingPanel } from './components/ProcessingPanel'
 import { ConfigurationPanel } from './components/ConfigurationPanel'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { ConversionProvider } from './contexts/ConversionContext'
 import { TitleBar } from './components/TitleBar'
-import type { ConversionTask } from '../../preload/preload'
 
 function App() {
   const [tasks, setTasks] = useState<ConversionTask[]>([])
@@ -14,54 +14,26 @@ function App() {
   const [isConverting, setIsConverting] = useState(false)
   const [conversionProgress, setConversionProgress] = useState(0)
 
-  // Initialize default output directory
   useEffect(() => {
-    const initializeOutputDir = async () => {
-      try {
-        // Get default output directory from Electron main process
-        const defaultDir = await window.electronAPI.getDefaultOutputDirectory()
-        setOutputDirectory(defaultDir)
-      } catch (error) {
-        console.error('Failed to get default output directory:', error)
-        // Fallback to a safe default
-        setOutputDirectory('~/Documents/Converted_Markdown')
-      }
-    }
-    
-    initializeOutputDir()
+    const defaultDir = WebFileHandler.getDefaultOutputDirectory()
+    setOutputDirectory(defaultDir)
   }, [])
 
-  // Listen for conversion progress updates
   useEffect(() => {
-    const handleConversionProgress = (updatedTask: ConversionTask) => {
+    const handleProgress = (task: ConversionTask) => {
       setTasks(prevTasks => 
-        prevTasks.map(task => 
-          task.id === updatedTask.id ? updatedTask : task
-        )
+        prevTasks.map(t => t.id === task.id ? task : t)
       )
-      
-      // Update overall progress
-      setTasks(currentTasks => {
-        const completed = currentTasks.filter(t => 
-          t.status === 'completed' || t.status === 'failed'
-        ).length
-        const total = currentTasks.length
-        setConversionProgress(total > 0 ? (completed / total) * 100 : 0)
-        return currentTasks
-      })
     }
 
-    window.electronAPI.onConversionProgress(handleConversionProgress)
-
-    return () => {
-      window.electronAPI.removeAllListeners('conversion-progress')
-    }
+    // Store the handler for use in conversion
+    window.conversionProgressHandler = handleProgress
   }, [])
 
   const handleAddFiles = useCallback(async () => {
     try {
-      const newTasks = await window.electronAPI.selectFiles()
-      setTasks(prevTasks => [...prevTasks, ...newTasks])
+      const selectedTasks = await WebFileHandler.selectFiles()
+      setTasks(prev => [...prev, ...selectedTasks])
     } catch (error) {
       console.error('Error adding files:', error)
     }
@@ -69,8 +41,8 @@ function App() {
 
   const handleAddFolder = useCallback(async () => {
     try {
-      const newTasks = await window.electronAPI.selectFolder()
-      setTasks(prevTasks => [...prevTasks, ...newTasks])
+      const selectedTasks = await WebFileHandler.selectFolder()
+      setTasks(prev => [...prev, ...selectedTasks])
     } catch (error) {
       console.error('Error adding folder:', error)
     }
@@ -87,9 +59,10 @@ function App() {
 
   const handleSelectOutputDirectory = useCallback(async () => {
     try {
-      const selectedDir = await window.electronAPI.selectOutputDirectory()
-      if (selectedDir) {
-        setOutputDirectory(selectedDir)
+      // In web version, user can type the directory name
+      const directory = prompt('Enter output directory name:', outputDirectory)
+      if (directory) {
+        setOutputDirectory(directory)
       }
     } catch (error) {
       console.error('Error selecting output directory:', error)
@@ -108,7 +81,11 @@ function App() {
       setTasks(resetTasks)
 
       // Start conversion
-      await window.electronAPI.convertFiles(resetTasks, outputDirectory)
+      await WebFileHandler.convertFiles(
+        resetTasks, 
+        outputDirectory,
+        window.conversionProgressHandler
+      )
     } catch (error) {
       console.error('Conversion error:', error)
     } finally {
@@ -119,7 +96,7 @@ function App() {
   const handleOpenOutputFolder = useCallback(async () => {
     if (outputDirectory) {
       try {
-        await window.electronAPI.openFolder(outputDirectory)
+        WebFileHandler.openFolder(outputDirectory)
       } catch (error) {
         console.error('Error opening folder:', error)
       }
@@ -187,6 +164,13 @@ function App() {
       </ConversionProvider>
     </ThemeProvider>
   )
+}
+
+// Extend window interface for progress handler
+declare global {
+  interface Window {
+    conversionProgressHandler?: (task: ConversionTask) => void
+  }
 }
 
 export default App

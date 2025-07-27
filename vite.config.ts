@@ -4,6 +4,9 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    port: 4000
+  },
   root: 'src/renderer',
   base: './',
   build: {
