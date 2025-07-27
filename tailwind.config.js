@@ -71,6 +71,10 @@ export default {
           secondary: '#6b7280',
           tertiary: '#9ca3af',
           inverse: '#ffffff',
+        },
+        border: {
+          DEFAULT: '#e5e7eb',
+          dark: '#374151',
         }
       },
       fontFamily: {
