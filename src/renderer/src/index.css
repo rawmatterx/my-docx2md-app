@@ -5,7 +5,11 @@
 @layer base {
 
   body {
-    @apply bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-text-primary;
+    @apply bg-gray-50 dark:bg-gray-900 text-text-primary;
+  background-image: linear-gradient(to bottom right, theme('colors.gray.50'), theme('colors.white'), theme('colors.gray.100'));
+  @media (prefers-color-scheme: dark) {
+    background-image: linear-gradient(to bottom right, theme('colors.gray.900'), theme('colors.gray.800'), theme('colors.gray.900'));
+  }
     font-feature-settings: "rlig" 1, "calt" 1;
     font-optical-sizing: auto;
   }
