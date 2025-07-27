@@ -121,7 +121,7 @@ function App() {
             
             {/* Left Panel - File Management (30%) */}
             <motion.div 
-              className="w-[30%] min-w-[380px] panel-border bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl relative z-10"
+              className="w-[30%] min-w-[380px] panel-border bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl relative z-10"
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.1 }}
@@ -154,7 +154,7 @@ function App() {
 
             {/* Right Panel - Configuration & Output (30%) */}
             <motion.div 
-              className="w-[30%] min-w-[380px] border-l border-gray-200/50 dark:border-gray-700/50 bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl relative z-10"
+              className="w-[30%] min-w-[380px] border-l border-neutral-200/50 dark:border-neutral-700/50 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-xl relative z-10"
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.3 }}

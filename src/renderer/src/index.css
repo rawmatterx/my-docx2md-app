@@ -5,7 +5,8 @@
 @layer base {
 
   body {
-    @apply bg-gray-50 dark:bg-gray-900 text-text-primary;
+    background-color: #f8fafc;
+    color: #1f2937;
   background-image: linear-gradient(to bottom right, #f9fafb, #ffffff, #f3f4f6);
   @media (prefers-color-scheme: dark) {
     background-image: linear-gradient(to bottom right, #111827, #1f2937, #111827);
@@ -18,11 +19,11 @@
 @layer components {
   /* Custom component styles following 2025 design trends */
   .glass-effect {
-    @apply backdrop-blur-xl bg-white/70 dark:bg-gray-900/70 border border-white/20 dark:border-gray-700/30;
+    @apply backdrop-blur-xl bg-white/70 border border-white/20;
   }
   
   .card-elevated {
-    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50;
+    @apply bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20;
   }
   
   .drag-active {
@@ -34,11 +35,11 @@
   }
   
   .button-secondary {
-    @apply bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg border border-gray-200 dark:border-gray-600;
+    @apply bg-white/80 hover:bg-white text-gray-700 font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg border border-white/20;
   }
   
   .input-field {
-    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 shadow-sm focus:shadow-lg;
+    @apply bg-white/80 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 shadow-sm focus:shadow-lg;
   }
   
   .panel-border {
@@ -46,7 +47,7 @@
   }
   
   .status-pending {
-    @apply text-gray-600 bg-gray-100/80 dark:bg-gray-800/80 dark:text-gray-400 backdrop-blur-sm;
+    @apply text-gray-600 bg-white/60 backdrop-blur-sm;
   }
   
   .status-processing {

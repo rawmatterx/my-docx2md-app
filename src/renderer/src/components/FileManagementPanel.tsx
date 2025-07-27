@@ -92,7 +92,7 @@ export function FileManagementPanel({
       </div>
 
       {/* Stats Bar */}
-      <div className="px-8 py-4 bg-gray-50/50 dark:bg-gray-800/30 border-b border-gray-200/30 dark:border-gray-700/30">
+      <div className="px-8 py-4 bg-neutral-50/50 dark:bg-neutral-800/30 border-b border-neutral-200/30 dark:border-neutral-700/30">
         <div className="flex items-center justify-between text-sm">
           <span className="text-gray-600 dark:text-gray-400">
             {tasks.length} files selected
@@ -119,11 +119,11 @@ export function FileManagementPanel({
 
         <motion.button
           onClick={onAddFolder}
-          className="w-full flex items-center justify-center space-x-3 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-semibold py-4 px-6 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg border border-gray-200 dark:border-gray-600"
+          className="w-full flex items-center justify-center space-x-3 bg-white hover:bg-neutral-50 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-300 font-semibold py-4 px-6 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg border border-neutral-200 dark:border-neutral-600"
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
         >
-          <div className="p-1 bg-gray-100 dark:bg-gray-700 rounded-lg">
+          <div className="p-1 bg-neutral-100 dark:bg-neutral-700 rounded-lg">
             <FolderOpen className="w-5 h-5" />
           </div>
           <span className="text-lg">Add Folder</span>
@@ -149,7 +149,7 @@ export function FileManagementPanel({
         className={`mx-8 mb-6 border-2 border-dashed rounded-2xl p-8 text-center transition-all duration-300 ${
           isDragOver
             ? 'border-primary-400 bg-primary-50/50 dark:bg-primary-900/20 scale-105'
-            : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50/50 dark:hover:bg-gray-800/30'
+            : 'border-neutral-300 dark:border-neutral-600 hover:border-neutral-400 dark:hover:border-neutral-500 hover:bg-neutral-50/50 dark:hover:bg-neutral-800/30'
         }`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
@@ -160,7 +160,7 @@ export function FileManagementPanel({
           transition={{ duration: 0.2 }}
         >
           <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center ${
-            isDragOver ? 'bg-primary-100 dark:bg-primary-900/30' : 'bg-gray-100 dark:bg-gray-800'
+            isDragOver ? 'bg-blue-100 dark:bg-blue-900/30' : 'bg-neutral-100 dark:bg-neutral-800'
           }`}>
             <Upload className={`w-8 h-8 ${
               isDragOver ? 'text-primary-500' : 'text-gray-400'
@@ -191,7 +191,7 @@ export function FileManagementPanel({
 
         <motion.button
           onClick={onAddFolder}
-          className="w-full flex items-center justify-center space-x-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium py-3 px-4 rounded-lg transition-all duration-200"
+          className="w-full flex items-center justify-center space-x-2 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-300 font-medium py-3 px-4 rounded-lg transition-all duration-200"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
@@ -276,7 +276,7 @@ export function FileManagementPanel({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.2, delay: index * 0.05 }}
-                    className="group bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-200"
+                    className="group bg-white dark:bg-neutral-800 rounded-lg p-4 shadow-sm border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-all duration-200"
                   >
                     <div className="flex items-start space-x-3">
                       <div className="flex-shrink-0 mt-0.5">

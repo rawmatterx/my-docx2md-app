@@ -84,7 +84,7 @@ export function ProcessingPanel({
           className={`w-full flex items-center justify-center space-x-4 font-bold py-6 px-8 rounded-2xl transition-all duration-300 ${
             canStartConversion
               ? 'bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 hover:from-green-600 hover:via-emerald-600 hover:to-teal-600 text-white shadow-2xl hover:shadow-green-500/25 transform hover:scale-105'
-              : 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed'
+              : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-400 dark:text-neutral-500 cursor-not-allowed'
           }`}
           whileHover={canStartConversion ? { scale: 1.02, y: -2 } : {}}
           whileTap={canStartConversion ? { scale: 0.98 } : {}}
@@ -126,7 +126,7 @@ export function ProcessingPanel({
             exit={{ opacity: 0, height: 0 }}
             className="px-6 mb-6"
           >
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-card">
+            <div className="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-card">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-text-primary dark:text-text-inverse">
                   Progress Overview
@@ -137,7 +137,7 @@ export function ProcessingPanel({
               </div>
 
               {/* Progress Bar */}
-              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 mb-6 overflow-hidden">
+              <div className="w-full bg-neutral-200 dark:bg-neutral-700 rounded-full h-3 mb-6 overflow-hidden">
                 <motion.div
                   className="h-full bg-gradient-to-r from-primary-500 to-primary-600 rounded-full"
                   initial={{ width: 0 }}
@@ -148,7 +148,7 @@ export function ProcessingPanel({
 
               {/* Stats Grid */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                <div className="text-center p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded-lg">
                   <div className="text-2xl font-bold text-success-600 dark:text-success-400">
                     {stats.completed}
                   </div>
@@ -157,7 +157,7 @@ export function ProcessingPanel({
                   </div>
                 </div>
                 
-                <div className="text-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                <div className="text-center p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded-lg">
                   <div className="text-2xl font-bold text-error-600 dark:text-error-400">
                     {stats.failed}
                   </div>
@@ -166,7 +166,7 @@ export function ProcessingPanel({
                   </div>
                 </div>
 
-                <div className="text-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                <div className="text-center p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded-lg">
                   <div className="text-2xl font-bold text-warning-600 dark:text-warning-400">
                     {stats.processing}
                   </div>
@@ -175,7 +175,7 @@ export function ProcessingPanel({
                   </div>
                 </div>
 
-                <div className="text-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                <div className="text-center p-3 bg-neutral-50 dark:bg-neutral-700/50 rounded-lg">
                   <div className="text-2xl font-bold text-gray-600 dark:text-gray-400">
                     {stats.pending}
                   </div>
@@ -221,7 +221,7 @@ export function ProcessingPanel({
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700"
+                    className="bg-white dark:bg-neutral-800 rounded-lg p-4 shadow-sm border border-neutral-200 dark:border-neutral-700"
                   >
                     <div className="flex items-center space-x-3">
                       <div className="flex-shrink-0">
@@ -307,7 +307,7 @@ export function ProcessingPanel({
         >
           <motion.button
             onClick={onOpenOutputFolder}
-            className="w-full flex items-center justify-center space-x-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium py-3 px-4 rounded-lg transition-all duration-200"
+            className="w-full flex items-center justify-center space-x-2 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-300 font-medium py-3 px-4 rounded-lg transition-all duration-200"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >

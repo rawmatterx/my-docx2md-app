@@ -76,15 +76,15 @@ export function ConfigurationPanel({
 
       {/* Tab Navigation */}
       <div className="px-8 pt-6">
-        <div className="flex space-x-1 bg-gray-100/80 dark:bg-gray-800/80 rounded-2xl p-1.5 backdrop-blur-sm">
+        <div className="flex space-x-1 bg-neutral-100/80 dark:bg-neutral-800/80 rounded-2xl p-1.5 backdrop-blur-sm">
           {tabs.map(({ id, label, icon: Icon }) => (
             <motion.button
               key={id}
               onClick={() => setActiveTab(id)}
               className={`flex-1 flex items-center justify-center space-x-2 py-3 px-4 rounded-xl text-sm font-semibold transition-all duration-300 ${
                 activeTab === id
-                  ? 'bg-white dark:bg-gray-700 text-primary-600 dark:text-primary-400 shadow-lg scale-105'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-white/50 dark:hover:bg-gray-700/50'
+                  ? 'bg-white dark:bg-neutral-700 text-blue-600 dark:text-blue-400 shadow-lg scale-105'
+                  : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 hover:bg-white/50 dark:hover:bg-neutral-700/50'
               }`}
               whileHover={{ scale: activeTab === id ? 1.05 : 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -98,14 +98,14 @@ export function ConfigurationPanel({
 
       {/* Tab Navigation */}
       <div className="px-6 pt-4">
-        <div className="flex space-x-1 bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
+        <div className="flex space-x-1 bg-neutral-100 dark:bg-neutral-800 rounded-lg p-1">
           {tabs.map(({ id, label, icon: Icon }) => (
             <motion.button
               key={id}
               onClick={() => setActiveTab(id)}
               className={`flex-1 flex items-center justify-center space-x-2 py-2 px-3 rounded-md text-sm font-medium transition-all duration-200 ${
                 activeTab === id
-                  ? 'bg-white dark:bg-gray-700 text-primary-600 dark:text-primary-400 shadow-sm'
+                  ? 'bg-white dark:bg-neutral-700 text-blue-600 dark:text-blue-400 shadow-sm'
                   : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
               }`}
               whileHover={{ scale: 1.02 }}
@@ -136,7 +136,7 @@ export function ConfigurationPanel({
                   Output Directory
                 </label>
                 <div className="space-y-3">
-                  <div className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center space-x-3 p-3 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
                     <Folder className="w-5 h-5 text-gray-400 flex-shrink-0" />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-mono text-text-primary dark:text-text-inverse truncate">
@@ -150,7 +150,7 @@ export function ConfigurationPanel({
                     disabled={isConverting}
                     className={`w-full flex items-center justify-center space-x-2 py-2 px-4 rounded-lg font-medium transition-all duration-200 ${
                       isConverting
-                        ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed'
+                        ? 'bg-neutral-100 dark:bg-neutral-800 text-neutral-400 cursor-not-allowed'
                         : 'bg-primary-100 hover:bg-primary-200 dark:bg-primary-900/30 dark:hover:bg-primary-900/50 text-primary-700 dark:text-primary-300'
                     }`}
                     whileHover={!isConverting ? { scale: 1.02 } : {}}
@@ -168,7 +168,7 @@ export function ConfigurationPanel({
                   Conversion Options
                 </label>
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                  <div className="flex items-center justify-between p-3 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
                     <div>
                       <p className="text-sm font-medium text-text-primary dark:text-text-inverse">
                         Preserve Formatting
@@ -182,7 +182,7 @@ export function ConfigurationPanel({
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                  <div className="flex items-center justify-between p-3 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
                     <div>
                       <p className="text-sm font-medium text-text-primary dark:text-text-inverse">
                         Link Preservation
@@ -196,7 +196,7 @@ export function ConfigurationPanel({
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                  <div className="flex items-center justify-between p-3 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
                     <div>
                       <p className="text-sm font-medium text-text-primary dark:text-text-inverse">
                         Image References

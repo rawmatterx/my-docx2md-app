@@ -46,7 +46,7 @@ export function TitleBar() {
       </div>
 
       {/* Theme Switcher */}
-      <div className="flex items-center space-x-1 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl p-1.5 shadow-sm border border-gray-200/50 dark:border-gray-700/50">
+      <div className="flex items-center space-x-1 bg-white/60 dark:bg-neutral-800/60 backdrop-blur-sm rounded-xl p-1.5 shadow-sm border border-neutral-200/50 dark:border-neutral-700/50">
         {themeOptions.map(({ value, icon: Icon, label }) => (
           <motion.button
             key={value}
@@ -54,7 +54,7 @@ export function TitleBar() {
             className={`p-2.5 rounded-lg transition-all duration-300 ${
               theme === value
                 ? 'bg-primary-500 shadow-lg text-white scale-110'
-                : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700'
             }`}
             whileHover={{ scale: theme === value ? 1.1 : 1.05 }}
             whileTap={{ scale: 0.95 }}
