@@ -42,8 +42,80 @@ export function ProcessingPanel({
   return (
     <div className="h-full flex flex-col">
       {/* Header */}
-      <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-        <h2 className="text-xl font-semibold text-text-primary dark:text-text-inverse mb-2">
+      <div className="p-8 border-b border-gray-200/50 dark:border-gray-700/50 bg-gradient-to-br from-gray-50/50 to-white dark:from-gray-800/50 dark:to-gray-900">
+        <div className="flex items-center space-x-3 mb-3">
+          <div className="w-2 h-8 bg-gradient-to-b from-green-500 to-emerald-600 rounded-full"></div>
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            Processing Center
+          </h2>
+        </div>
+        <p className="text-sm text-gray-600 dark:text-gray-400 ml-5">
+          Monitor conversion progress and manage operations
+        </p>
+      </div>
+
+      {/* Quick Stats */}
+      <div className="px-8 py-6 bg-gradient-to-r from-gray-50/50 to-white dark:from-gray-800/30 dark:to-gray-900/30">
+        <div className="grid grid-cols-4 gap-4">
+          <div className="text-center">
+            <div className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</div>
+            <div className="text-xs text-gray-500 dark:text-gray-400">Total</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.completed}</div>
+            <div className="text-xs text-gray-500 dark:text-gray-400">Done</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">{stats.processing}</div>
+            <div className="text-xs text-gray-500 dark:text-gray-400">Active</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-red-600 dark:text-red-400">{stats.failed}</div>
+            <div className="text-xs text-gray-500 dark:text-gray-400">Failed</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Action Button */}
+      <div className="p-8">
+        <motion.button
+          onClick={onStartConversion}
+          disabled={!canStartConversion}
+          className={`w-full flex items-center justify-center space-x-4 font-bold py-6 px-8 rounded-2xl transition-all duration-300 ${
+            canStartConversion
+              ? 'bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 hover:from-green-600 hover:via-emerald-600 hover:to-teal-600 text-white shadow-2xl hover:shadow-green-500/25 transform hover:scale-105'
+              : 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed'
+          }`}
+          whileHover={canStartConversion ? { scale: 1.02, y: -2 } : {}}
+          whileTap={canStartConversion ? { scale: 0.98 } : {}}
+        >
+          {isConverting ? (
+            <>
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                className="p-2 bg-white/20 rounded-xl"
+              >
+                <Zap className="w-8 h-8" />
+              </motion.div>
+              <div>
+                <div className="text-xl">Converting Files...</div>
+                <div className="text-sm opacity-80">AI-powered transformation in progress</div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="p-2 bg-white/20 rounded-xl">
+                <Play className="w-8 h-8" />
+              </div>
+              <div>
+                <div className="text-xl">Start Conversion</div>
+                <div className="text-sm opacity-80">Transform {stats.total} files to Markdown</div>
+              </div>
+            </>
+          )}
+        </motion.button>
+      </div>
           Processing & Progress
         </h2>
         <p className="text-sm text-text-secondary dark:text-gray-400">

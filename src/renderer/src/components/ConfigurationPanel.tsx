@@ -62,8 +62,39 @@ export function ConfigurationPanel({
   return (
     <div className="h-full flex flex-col">
       {/* Header */}
-      <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-        <h2 className="text-xl font-semibold text-text-primary dark:text-text-inverse mb-2">
+      <div className="p-8 border-b border-gray-200/50 dark:border-gray-700/50 bg-gradient-to-br from-gray-50/50 to-white dark:from-gray-800/50 dark:to-gray-900">
+        <div className="flex items-center space-x-3 mb-3">
+          <div className="w-2 h-8 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full"></div>
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            Configuration
+          </h2>
+        </div>
+        <p className="text-sm text-gray-600 dark:text-gray-400 ml-5">
+          Customize settings and preview results
+        </p>
+      </div>
+
+      {/* Tab Navigation */}
+      <div className="px-8 pt-6">
+        <div className="flex space-x-1 bg-gray-100/80 dark:bg-gray-800/80 rounded-2xl p-1.5 backdrop-blur-sm">
+          {tabs.map(({ id, label, icon: Icon }) => (
+            <motion.button
+              key={id}
+              onClick={() => setActiveTab(id)}
+              className={`flex-1 flex items-center justify-center space-x-2 py-3 px-4 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                activeTab === id
+                  ? 'bg-white dark:bg-gray-700 text-primary-600 dark:text-primary-400 shadow-lg scale-105'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-white/50 dark:hover:bg-gray-700/50'
+              }`}
+              whileHover={{ scale: activeTab === id ? 1.05 : 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Icon className="w-5 h-5" />
+              <span>{label}</span>
+            </motion.button>
+          ))}
+        </div>
+      </div>
           Configuration & Output
         </h2>
         <p className="text-sm text-text-secondary dark:text-gray-400">

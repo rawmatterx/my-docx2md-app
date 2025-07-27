@@ -106,15 +106,22 @@ function App() {
   return (
     <ThemeProvider>
       <ConversionProvider>
-        <div className="h-screen flex flex-col bg-background-light dark:bg-background-dark">
+        <div className="h-screen flex flex-col bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
           {/* Title Bar */}
           <TitleBar />
           
           {/* Main Content - Three Panel Layout */}
-          <div className="flex-1 flex overflow-hidden">
+          <div className="flex-1 flex overflow-hidden relative">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-30 dark:opacity-10">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/5 via-transparent to-emerald-500/5"></div>
+              <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
+            </div>
+            
             {/* Left Panel - File Management (30%) */}
             <motion.div 
-              className="w-[30%] min-w-[320px] panel-border bg-surface-light dark:bg-surface-dark"
+              className="w-[30%] min-w-[380px] panel-border bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl relative z-10"
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.1 }}
@@ -130,7 +137,7 @@ function App() {
 
             {/* Center Panel - Processing & Progress (40%) */}
             <motion.div 
-              className="flex-1 bg-background-light dark:bg-background-dark"
+              className="flex-1 bg-transparent relative z-10"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.2 }}
@@ -147,7 +154,7 @@ function App() {
 
             {/* Right Panel - Configuration & Output (30%) */}
             <motion.div 
-              className="w-[30%] min-w-[320px] border-l border-gray-200 dark:border-gray-700 bg-surface-light dark:bg-surface-dark"
+              className="w-[30%] min-w-[380px] border-l border-gray-200/50 dark:border-gray-700/50 bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl relative z-10"
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.3 }}
