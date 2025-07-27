@@ -72,7 +72,7 @@ export default {
           tertiary: '#9ca3af',
           inverse: '#ffffff',
         },
-        border: {
+        appBorder: {
           DEFAULT: '#e5e7eb',
           dark: '#374151',
         }
