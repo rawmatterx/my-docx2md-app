@@ -1,0 +1,168 @@
+{
+  "project_name": "DocX to Markdown Bulk Converter",
+  "project_description": "A modern Electron-based desktop application with React frontend for bulk conversion of Microsoft Word (.docx) documents to Markdown format. Features drag-and-drop interface, batch processing, progress tracking, and file management capabilities.",
+  "tech_stack": {
+    "frontend": [
+      "React 18",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Framer Motion",
+      "Lucide React Icons",
+      "Vite"
+    ],
+    "backend": [
+      "Electron",
+      "Node.js",
+      "TypeScript"
+    ],
+    "conversion_libraries": [
+      "mammoth.js - DOCX to HTML conversion",
+      "html2text - HTML to Markdown conversion"
+    ],
+    "build_tools": [
+      "Vite",
+      "PostCSS",
+      "Autoprefixer",
+      "ESLint"
+    ]
+  },
+  "architecture": {
+    "type": "Electron Desktop Application",
+    "main_process": "src/main/main.ts - Handles file system operations, IPC communication, and conversion logic",
+    "renderer_process": "src/renderer/ - React-based UI with modern design",
+    "preload_script": "src/preload/preload.ts - Secure bridge between main and renderer processes",
+    "communication": "IPC (Inter-Process Communication) via Electron's contextBridge"
+  },
+  "current_features": {
+    "implemented": [
+      "Modern React UI with Tailwind CSS v4",
+      "File selection (individual files and folders)",
+      "Drag and drop interface",
+      "Batch file processing",
+      "Real-time conversion progress tracking",
+      "File management panel with status indicators",
+      "Output directory selection",
+      "Theme switching (light/dark/system)",
+      "Responsive design with animations",
+      "Error handling and status reporting",
+      "DOCX to Markdown conversion using mammoth.js + html2text",
+      "Recursive folder scanning for DOCX files",
+      "File size formatting and statistics",
+      "PWA support with service worker"
+    ],
+    "partially_implemented": [
+      "Web version fallback (WebFileHandler.ts exists but uses placeholder conversion)",
+      "Configuration panel with settings tabs",
+      "Logging system (UI exists but backend logging not fully implemented)"
+    ]
+  },
+  "conversion_workflow": {
+    "electron_version": [
+      "1. User selects files/folders via native dialog or drag-drop",
+      "2. Main process scans for .docx files recursively",
+      "3. Files are queued as ConversionTask objects",
+      "4. For each file: Read DOCX → mammoth.js converts to HTML → html2text converts to Markdown",
+      "5. Progress updates sent to renderer via IPC",
+      "6. Converted files saved to selected output directory",
+      "7. Status updates and error handling throughout process"
+    ],
+    "web_version": [
+      "1. File selection via HTML input elements",
+      "2. Placeholder conversion (not fully functional)",
+      "3. Download via blob URLs and anchor elements"
+    ]
+  },
+  "file_structure": {
+    "main_process": {
+      "src/main/main.ts": "Core Electron app, IPC handlers, conversion logic"
+    },
+    "preload": {
+      "src/preload/preload.ts": "Secure API bridge with type definitions"
+    },
+    "renderer": {
+      "src/renderer/src/App.tsx": "Main React application component",
+      "src/renderer/src/components/": "UI components (FileManagementPanel, ProcessingPanel, ConfigurationPanel, TitleBar)",
+      "src/renderer/src/contexts/ThemeContext.tsx": "Theme management",
+      "src/renderer/src/utils/webFileHandler.ts": "Web version file handling (fallback)",
+      "src/renderer/src/index.css": "Tailwind CSS styles with custom components"
+    }
+  },
+  "data_models": {
+    "ConversionTask": {
+      "id": "string - unique identifier",
+      "inputPath": "string - source file path",
+      "outputPath": "string - destination file path",
+      "fileName": "string - display name",
+      "fileSize": "number - file size in bytes",
+      "status": "'pending' | 'processing' | 'completed' | 'failed'",
+      "errorMessage": "string? - error details if failed",
+      "file": "File? - browser File object for web version"
+    }
+  },
+  "current_issues": {
+    "critical": [
+      "Web version conversion is placeholder-only (not functional)",
+      "No actual Microsoft MarkItDown integration despite project name",
+      "Build warnings about CJS/ESM module types",
+      "404 errors when trying to run as web app"
+    ],
+    "moderate": [
+      "Limited error handling for malformed DOCX files",
+      "No batch size limits or memory management",
+      "No conversion quality settings or options",
+      "Missing comprehensive logging system",
+      "No file validation beyond extension checking"
+    ],
+    "minor": [
+      "Some UI components have unused props",
+      "Theme switching could be more performant",
+      "Missing accessibility features"
+    ]
+  },
+  "missing_features": {
+    "core_functionality": [
+      "Integration with Microsoft MarkItDown library for enhanced conversion",
+      "Support for additional file formats (PDF, PPTX, XLSX)",
+      "Advanced conversion options and settings",
+      "Conversion quality assessment and validation",
+      "Batch processing with memory management",
+      "Resume/pause conversion capabilities"
+    ],
+    "web_deployment": [
+      "Functional web version with client-side conversion",
+      "Server-side conversion API",
+      "Cloud storage integration",
+      "User authentication and file management",
+      "Progressive Web App features"
+    ],
+    "enterprise_features": [
+      "Bulk processing with job queues",
+      "API endpoints for programmatic access",
+      "Configuration management",
+      "Audit logging and reporting",
+      "Integration with document management systems"
+    ]
+  },
+  "dependencies": {
+    "production": {
+      "electron": "^latest",
+      "mammoth": "^1.x.x",
+      "html2text": "^latest",
+      "react": "^18.x.x",
+      "framer-motion": "^latest",
+      "lucide-react": "^latest"
+    },
+    "development": {
+      "vite": "^5.x.x",
+      "typescript": "^5.x.x",
+      "tailwindcss": "^4.1.11",
+      "@tailwindcss/postcss": "^4.1.11",
+      "eslint": "^latest"
+    }
+  },
+  "deployment_status": {
+    "electron_app": "Functional with working conversion",
+    "web_app": "Non-functional - placeholder implementation only",
+    "build_system": "Working with Tailwind v4 compatibility achieved"
+  }
+}

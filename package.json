@@ -1,8 +1,12 @@
 {
-  "name": "docx-markdown-converter",
+  "name": "markitdown-web-converter",
   "version": "1.0.0",
-  "description": "Modern DocX to Markdown Bulk Converter with sophisticated UI",
-  "main": "dist/main.js",
+  "description": "Microsoft MarkItDown-powered web converter with modern UI",
+  "type": "module",
+  "homepage": "https://github.com/rawmatterx/my-docx2md-app",
+  "author": "rawmatterx",
+  "license": "MIT",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -14,63 +18,37 @@
     "docx",
     "markdown",
     "converter",
-    "electron",
     "react",
     "typescript"
   ],
-  "author": "DocX Converter Team",
-  "license": "MIT",
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.11",
-    "@tailwindcss/typography": "^0.5.16",
-    "@types/node": "^20.10.5",
-    "@types/plist": "^3.0.5",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
+    "@types/node": "^18.19.9",
+    "@types/react": "^18.2.56",
+    "@types/react-dom": "^18.2.19",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.21",
-    "concurrently": "^8.2.2",
-    "electron": "^28.1.0",
-    "electron-builder": "^24.9.1",
+    "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
-    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "tailwind-scrollbar": "^4.0.2",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.35",
     "tailwindcss": "^4.1.11",
+    "@tailwindcss/postcss": "^4.1.11",
     "typescript": "^5.3.3",
-    "vite": "^5.0.10",
-    "vite-plugin-pwa": "^1.0.2"
+    "vite": "^5.0.12",
+    "concurrently": "^8.2.2"
   },
   "dependencies": {
     "clsx": "^2.0.0",
-    "framer-motion": "^10.16.16",
+    "framer-motion": "^11.0.8",
     "html2text": "^6.0.0",
-    "lucide-react": "^0.303.0",
+    "lucide-react": "^0.263.1",
     "mammoth": "^1.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "socket.io-client": "^4.7.4",
+    "axios": "^1.6.2",
     "tailwind-merge": "^2.2.0"
-  },
-  "build": {
-    "appId": "com.docxconverter.app",
-    "productName": "DocX to Markdown Converter",
-    "directories": {
-      "output": "release"
-    },
-    "files": [
-      "dist/**/*",
-      "node_modules/**/*"
-    ],
-    "mac": {
-      "category": "public.app-category.productivity"
-    },
-    "win": {
-      "target": "nsis"
-    },
-    "linux": {
-      "target": "AppImage"
-    }
   }
 }
